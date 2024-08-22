@@ -36,5 +36,5 @@ bin/
 *.log-*.gz
 logs/
 
-# Database log
-*.trace.db
+# Database
+*.db
