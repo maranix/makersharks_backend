@@ -14,7 +14,7 @@ public class PingController {
     private static final String pong = "Pong!";
 
     @GetMapping("/ping")
-    public Response<String> ping() {
+    public Response<String> getPing() {
         return Response.success(HttpStatus.OK, pong);
     }
 }

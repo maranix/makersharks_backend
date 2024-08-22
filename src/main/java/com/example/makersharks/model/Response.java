@@ -16,10 +16,6 @@ public record Response<T>(
         }
 
         public static <T> Response<T> error(HttpStatus status, String error, T data) {
-                if (error == null) {
-                        throw new IllegalArgumentException("error cannot be null.");
-                }
-
                 return new Response<T>(status.value(), false, error, data);
         }
 }
