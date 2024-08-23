@@ -1,6 +1,6 @@
 package com.example.makersharks.common;
 
-import java.util.List;
+import java.util.Map;
 
 import com.example.makersharks.enums.ResponseErrorCode;
 
@@ -18,9 +18,9 @@ public class ResponseErrorInfo {
     private String message;
 
     @Schema(description = "List of fields that caused validation errors.")
-    private List<String> fieldErrors;
+    private Map<String, String> fieldErrors;
 
-    public ResponseErrorInfo(String code, String description, String message, List<String> fieldErrors) {
+    public ResponseErrorInfo(String code, String description, String message, Map<String, String> fieldErrors) {
         this.code = code;
         this.description = description;
         this.message = message;
@@ -54,11 +54,11 @@ public class ResponseErrorInfo {
         this.message = message;
     }
 
-    public List<String> getFieldErrors() {
+    public Map<String, String> getFieldErrors() {
         return fieldErrors;
     }
 
-    public void setFieldErrors(List<String> fieldErrors) {
+    public void setFieldErrors(Map<String, String> fieldErrors) {
         this.fieldErrors = fieldErrors;
     }
 
@@ -78,7 +78,7 @@ public class ResponseErrorInfo {
 
     }
 
-    public ResponseErrorInfo withFieldErrors(List<String> fields) {
+    public ResponseErrorInfo withFieldErrors(Map<String, String> fields) {
         setFieldErrors(fields);
         return this;
     }
