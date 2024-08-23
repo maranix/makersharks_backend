@@ -1,0 +1,21 @@
+meta {
+  name: Create Supplier
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/api/suppliers
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "company_name": "some company",
+    "website": "",
+    "location": "India",
+    "nature_of_business": "3d_printing",
+    "manufacturing_processes": "casting"
+  }
+}
