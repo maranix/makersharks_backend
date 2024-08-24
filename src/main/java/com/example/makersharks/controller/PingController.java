@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api")
@@ -33,7 +34,7 @@ public class PingController {
             })
     })
     @GetMapping("/ping")
-    public Response<String> getPing() {
-        return Response.success(HttpStatus.OK, pong);
+    public ResponseEntity<Response<String>> getPing() {
+        return ResponseEntity.ok(Response.success(HttpStatus.OK, pong));
     }
 }

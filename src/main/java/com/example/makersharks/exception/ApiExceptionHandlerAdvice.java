@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.makersharks.common.Response;
@@ -19,12 +20,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @RestControllerAdvice
 @SuppressWarnings("rawtypes")
 public class ApiExceptionHandlerAdvice {
-    @ExceptionHandler(RuntimeException.class)
-    public Response responseHandler(RuntimeException e) {
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public Response responseHandler(Exception e) {
         return Response.error(HttpStatus.INTERNAL_SERVER_ERROR,
                 ResponseErrorInfo.fromCode(ResponseErrorCode.SERVER_ERROR));
     }
 
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Response handleValidationException(MethodArgumentNotValidException e) {
         Map<String, String> fieldErrors = new HashMap<>();
@@ -40,6 +43,7 @@ public class ApiExceptionHandlerAdvice {
         return Response.error(HttpStatus.UNPROCESSABLE_ENTITY, errorInfo);
     }
 
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public Response handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
         // Check for specific JSON parsing exceptions
