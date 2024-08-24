@@ -3,7 +3,7 @@ package com.example.makersharks.enums;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum ManufacturingProcesses {
+public enum ManufacturingProcess {
     MOULDING("moulding"),
     PRINTING_3D("3d_printing"),
     CASTING("casting"),
@@ -11,7 +11,7 @@ public enum ManufacturingProcesses {
 
     private final String value;
 
-    ManufacturingProcesses(String value) {
+    ManufacturingProcess(String value) {
         this.value = value;
     }
 
@@ -21,8 +21,8 @@ public enum ManufacturingProcesses {
     }
 
     @JsonCreator
-    public static ManufacturingProcesses forValue(String value) {
-        for (ManufacturingProcesses process : ManufacturingProcesses.values()) {
+    public static ManufacturingProcess forValue(String value) {
+        for (ManufacturingProcess process : ManufacturingProcess.values()) {
             if (process.getValue().equalsIgnoreCase(value)) {
                 return process;
             }

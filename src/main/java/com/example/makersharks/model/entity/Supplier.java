@@ -1,6 +1,6 @@
 package com.example.makersharks.model.entity;
 
-import com.example.makersharks.enums.ManufacturingProcesses;
+import com.example.makersharks.enums.ManufacturingProcess;
 import com.example.makersharks.enums.NatureOfBusiness;
 
 import jakarta.persistence.Column;
@@ -38,7 +38,7 @@ public class Supplier {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "manufacturing_processes", nullable = false)
-    private ManufacturingProcesses manufacturingProcesses;
+    private ManufacturingProcess manufacturingProcess;
 
     private String website;
 
@@ -50,7 +50,7 @@ public class Supplier {
         this.companyName = companyName;
         this.location = location;
         this.natureOfBusiness = NatureOfBusiness.valueOf(natureOfBusiness.toUpperCase());
-        this.manufacturingProcesses = ManufacturingProcesses.valueOf(manufacturingProcesses.toUpperCase());
+        this.manufacturingProcess = ManufacturingProcess.valueOf(manufacturingProcesses.toUpperCase());
         this.website = website;
     }
 
@@ -70,8 +70,8 @@ public class Supplier {
         return natureOfBusiness;
     }
 
-    public ManufacturingProcesses getManufacturingProcesses() {
-        return manufacturingProcesses;
+    public ManufacturingProcess getManufacturingProcess() {
+        return manufacturingProcess;
     }
 
     public String getWebsite() {
@@ -86,8 +86,8 @@ public class Supplier {
         this.location = location;
     }
 
-    public void setManufacturingProcesses(ManufacturingProcesses manufacturingProcesses) {
-        this.manufacturingProcesses = manufacturingProcesses;
+    public void setManufacturingProcess(ManufacturingProcess manufacturingProcesses) {
+        this.manufacturingProcess = manufacturingProcesses;
     }
 
     public void setNatureOfBusiness(NatureOfBusiness natureOfBusiness) {

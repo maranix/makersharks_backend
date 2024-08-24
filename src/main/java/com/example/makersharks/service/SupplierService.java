@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.example.makersharks.model.dto.CreateSupplierDTO;
 import com.example.makersharks.model.entity.Supplier;
-import com.example.makersharks.repository.SupplierRepsitory;
+import com.example.makersharks.repository.SupplierRepository;
 
 @Service
 public class SupplierService {
-    private SupplierRepsitory supplierRepsitory;
+    private SupplierRepository supplierRepository;
 
     @Autowired
-    public SupplierService(SupplierRepsitory supplierRepsitory) {
-        this.supplierRepsitory = supplierRepsitory;
+    public SupplierService(SupplierRepository supplierRepository) {
+        this.supplierRepository = supplierRepository;
     }
 
     public Supplier createSupplier(CreateSupplierDTO supplierDTO) {
@@ -23,13 +23,13 @@ public class SupplierService {
                 supplierDTO.getCompanyName(),
                 supplierDTO.getLocation(),
                 supplierDTO.getNatureOfBusiness(),
-                supplierDTO.getManufacturingProcesses(),
+                supplierDTO.getManufacturingProcess(),
                 supplierDTO.getWebsite());
 
-        return supplierRepsitory.save(supplier);
+        return supplierRepository.save(supplier);
     }
 
     public List<Supplier> getAll() {
-        return supplierRepsitory.findAll();
+        return supplierRepository.findAll();
     }
 }
