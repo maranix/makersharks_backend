@@ -188,7 +188,7 @@ Before you begin, ensure you have met the following requirements:
           "first": true,
           "empty": true
         }
-    ```
+```
 
 ### Project Structure
 
