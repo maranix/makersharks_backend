@@ -29,7 +29,7 @@ public enum ResponseErrorCode {
     /**
      * E0004: The resource already exists.
      */
-    ALREADY_EXISTS("E0004", "Already Exists", "The resource already exists.");
+    ALREADY_EXISTS("E0004", "Already Exists", "The resource already exists or conflicts with other resources.");
 
     private final String code;
     private final String description;

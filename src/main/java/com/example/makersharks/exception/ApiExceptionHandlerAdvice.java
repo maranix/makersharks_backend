@@ -19,8 +19,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @RestControllerAdvice
 @SuppressWarnings("rawtypes")
 public class ApiExceptionHandlerAdvice {
-    @ExceptionHandler(Exception.class)
-    public Response responseHandler(Exception e) {
+    @ExceptionHandler(RuntimeException.class)
+    public Response responseHandler(RuntimeException e) {
         return Response.error(HttpStatus.INTERNAL_SERVER_ERROR,
                 ResponseErrorInfo.fromCode(ResponseErrorCode.SERVER_ERROR));
     }
