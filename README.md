@@ -71,7 +71,8 @@ Before you begin, ensure you have met the following requirements:
 
 ### API Endpoints
 
-#### Supplier Endpoints
+#### Ping Endpoints
+
 -   **GET /api/ping:** Pings the server.
     -   **Response:**
 
@@ -82,6 +83,8 @@ Before you begin, ensure you have met the following requirements:
          "data": "Pong!"
         }
         ```
+        
+#### Supplier Endpoints
 
 -   **POST /api/suppliers:** Create a new supplier.
     -   **Required Request Body:**
@@ -157,39 +160,40 @@ Before you begin, ensure you have met the following requirements:
     -   **Response:**
 
         ```json
-        {
-         "status": 200,
-         "success": true,
-         "data": {
-          "content": [],
-          "pageable": {
-            "page_number": 0,
-            "page_size": 10,
-            "sort": {
-              "empty": true,
-              "sorted": false,
-              "unsorted": true
-            },
-            "offset": 0,
-            "paged": true,
-            "unpaged": false
-          },
-          "last": true,
-          "total_elements": 0,
-          "total_pages": 0,
-          "size": 10,
-          "number": 0,
-          "sort": {
-            "empty": true,
-            "sorted": false,
-            "unsorted": true
-          },
-          "number_of_elements": 0,
-          "first": true,
-          "empty": true
-        }
-```
-
+          {
+           "status": 200,
+           "success": true,
+           "data": {
+            "content": [],
+            "pageable": {
+              "page_number": 0,
+              "page_size": 10,
+              "sort": {
+                "empty": true,
+                "sorted": false,
+                "unsorted": true
+              },
+              "offset": 0,
+              "paged": true,
+              "unpaged": false
+              },
+              "last": true,
+              "total_elements": 0,
+              "total_pages": 0,
+              "size": 10,
+              "number": 0,
+              "sort": {
+                "empty": true,
+                "sorted": false,
+                "unsorted": true
+              },
+              "number_of_elements": 0,
+              "first": true,
+              "empty": true
+            }
+          }
+        ```
+      
 ### Project Structure
 
 The project is structured as follows:
