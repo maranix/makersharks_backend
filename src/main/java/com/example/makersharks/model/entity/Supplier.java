@@ -18,7 +18,7 @@ import jakarta.persistence.UniqueConstraint;
 @Table(name = "suppliers", uniqueConstraints = {
         @UniqueConstraint(name = "location_constraint", columnNames = { "location" })
 }, indexes = {
-        @Index(name = "index_location_nature_process", columnList = "location, nature_of_business, manufacturing_processes")
+        @Index(name = "index_location_nature_process", columnList = "location, nature_of_business, manufacturing_process")
 })
 public class Supplier {
 
@@ -37,7 +37,7 @@ public class Supplier {
     private NatureOfBusiness natureOfBusiness;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "manufacturing_processes", nullable = false)
+    @Column(name = "manufacturing_process", nullable = false)
     private ManufacturingProcess manufacturingProcess;
 
     private String website;
