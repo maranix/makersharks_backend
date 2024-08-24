@@ -4,8 +4,10 @@ import com.example.makersharks.enums.ManufacturingProcess;
 import com.example.makersharks.enums.NatureOfBusiness;
 import com.example.makersharks.validator.Enum;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotEmpty;
 
+@Tag(name = "Create Supplier Request Body")
 public class CreateSupplierDTO {
 
     @NotEmpty
