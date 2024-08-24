@@ -2,6 +2,7 @@ package com.example.makersharks.model.dto;
 
 import com.example.makersharks.enums.ManufacturingProcesses;
 import com.example.makersharks.enums.NatureOfBusiness;
+import com.example.makersharks.validator.Enum;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -14,18 +15,20 @@ public class CreateSupplierDTO {
     private String location;
 
     @NotEmpty
-    private NatureOfBusiness natureOfBusiness;
+    @Enum(enumClass = NatureOfBusiness.class, message = "Invalid nature of business")
+    private String natureOfBusiness;
 
     @NotEmpty
-    private ManufacturingProcesses manufacturingProcesses;
+    @Enum(enumClass = ManufacturingProcesses.class, message = "Invalid manufacturing processes")
+    private String manufacturingProcesses;
 
     private String website;
 
     public CreateSupplierDTO() {
     }
 
-    public CreateSupplierDTO(String companyName, String location, NatureOfBusiness natureOfBusiness,
-            ManufacturingProcesses manufacturingProcesses, String website) {
+    public CreateSupplierDTO(String companyName, String location, String natureOfBusiness,
+            String manufacturingProcesses, String website) {
         this.companyName = companyName;
         this.location = location;
         this.natureOfBusiness = natureOfBusiness;
@@ -41,11 +44,11 @@ public class CreateSupplierDTO {
         return location;
     }
 
-    public NatureOfBusiness getNatureOfBusiness() {
+    public String getNatureOfBusiness() {
         return natureOfBusiness;
     }
 
-    public ManufacturingProcesses getManufacturingProcesses() {
+    public String getManufacturingProcesses() {
         return manufacturingProcesses;
     }
 
