@@ -18,7 +18,7 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         requests -> requests
-                                .requestMatchers("/api/**")
+                                .requestMatchers("/api/**", "/swagger-ui/**", "/v3/api-docs/**")
                                 .permitAll()
                                 .anyRequest()
                                 .denyAll());
