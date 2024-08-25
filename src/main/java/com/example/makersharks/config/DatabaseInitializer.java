@@ -9,7 +9,7 @@ import com.example.makersharks.enums.ManufacturingProcess;
 import com.example.makersharks.enums.NatureOfBusiness;
 import com.example.makersharks.model.entity.Supplier;
 import com.example.makersharks.repository.SupplierRepository;
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 
 import jakarta.annotation.PostConstruct;
 
