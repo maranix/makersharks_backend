@@ -6,7 +6,7 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 @Constraint(validatedBy = { EnumValueValidator.class })
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
+@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Enum {
 
@@ -18,4 +18,5 @@ public @interface Enum {
 
     Class<? extends java.lang.Enum<?>> enumClass();
 
+    boolean nullable() default false;
 }

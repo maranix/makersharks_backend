@@ -5,20 +5,20 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class EnumValueValidator implements ConstraintValidator<Enum, String> {
 
-    private Enum annotation;
+    private Object[] enumValues;
+    private boolean nullable;
 
     @Override
     public void initialize(Enum annotation) {
-        this.annotation = annotation;
+        this.enumValues = annotation.enumClass().getEnumConstants();
+        this.nullable = annotation.nullable();
     }
 
     @Override
     public boolean isValid(String valueForValidation, ConstraintValidatorContext constraintValidatorContext) {
-        if (valueForValidation == null) {
-            return false;
+        if (nullable) {
+            return true;
         }
-
-        Object[] enumValues = this.annotation.enumClass().getEnumConstants();
 
         if (enumValues != null) {
             for (Object enumValue : enumValues) {
