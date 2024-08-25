@@ -36,6 +36,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// Faker
+	implementation 'com.github.javafaker:javafaker:1.0.2'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
