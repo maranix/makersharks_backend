@@ -2,6 +2,16 @@
 
 Makersharks Supplier Management API is a Spring Boot-based RESTful API that allows you to manage suppliers, including retrieving, creating, and filtering suppliers based on various criteria. The application is designed with best practices for security, error handling, and validation, making it a robust foundation for supplier management systems.
 
+## Deployment
+
+This web backend is currently deployed on an Amazon EC2 instance. You can access it at the following link:
+
+[Base Address](http://makersharks.maranix.in/api/)
+
+[Ping](http://makersharks.maranix.in/api/ping)
+
+[Swagger Docs](http://makersharks.maranix.in/swagger-ui/index.html)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -32,7 +42,7 @@ Makersharks Supplier Management API is a Spring Boot-based RESTful API that allo
 
 Before you begin, ensure you have met the following requirements:
 
-- **Java 17** or higher installed.
+- **Java 21** or higher installed.
 - **Gradle** installed.
 
 ### Installation
