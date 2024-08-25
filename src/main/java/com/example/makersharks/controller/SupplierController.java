@@ -237,14 +237,40 @@ public class SupplierController {
   @PostMapping("/query")
   public ResponseEntity<Response<Page<Supplier>>> querySuppliers(
       @Valid @RequestBody QuerySuppliersDTO querySuppliersDTO,
-      @RequestParam(name = "page", defaultValue = "0") Integer page,
+      @RequestParam(name = "page", defaultValue = "1") Integer page,
       @RequestParam(name = "limit", defaultValue = "10") Integer limit) {
     try {
-      Pageable pageable = PageRequest.of(page, limit);
+      Page<Supplier> suppliers;
+      Pageable pageable = PageRequest.of(Math.max(0, page - 1), limit);
 
-      Page<Supplier> suppliers = supplierService.findSuppliersByLocationAndNatureAndProcess(
-          querySuppliersDTO.getLocation(), querySuppliersDTO.getNatureOfBusiness(),
-          querySuppliersDTO.getManufacturingProcess(), pageable);
+      String location = querySuppliersDTO.getLocation();
+      String nature = querySuppliersDTO.getNatureOfBusiness();
+      String process = querySuppliersDTO.getManufacturingProcess();
+
+      /// TODO: Write a more dynamic query, this is bad.
+      if (location != null && nature != null && process != null) {
+        suppliers = supplierService.findSuppliersByLocationAndNatureOfBusinessAndManufacturingProcess(location, nature,
+            process, pageable);
+      } else if (location != null && nature != null) {
+        suppliers = supplierService.findSuppliersByLocationAndNatureOfBusiness(location, nature, pageable);
+      } else if (location != null && process != null) {
+        suppliers = supplierService.findSuppliersByLocationAndManufacturingProcess(location, process, pageable);
+      } else if (nature != null && process != null) {
+        suppliers = supplierService.findSuppliersByNatureOfBusinessAndManufacturingProcess(nature, process, pageable);
+      } else if (location != null) {
+        suppliers = supplierService.findSuppliersByLocation(location, pageable);
+      } else if (nature != null) {
+        suppliers = supplierService.findSuppliersByNatureOfBusiness(nature, pageable);
+      } else if (process != null) {
+        suppliers = supplierService.findSuppliersByManufacturingProcess(process, pageable);
+      } else {
+        ResponseErrorInfo errorInfo = ResponseErrorInfo.fromCode(ResponseErrorCode.VALIDATION_ERROR)
+            .withDescription("Expected to receive atleast one value. Received none.")
+            .withMessage("Atleast one of location, nature_of_business, manufacturing_process is required");
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+            .body(Response.error(HttpStatus.UNPROCESSABLE_ENTITY, errorInfo));
+      }
 
       return ResponseEntity.ok(Response.success(HttpStatus.OK, suppliers));
     } catch (DataAccessException e) {

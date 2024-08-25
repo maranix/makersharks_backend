@@ -4,18 +4,16 @@ import com.example.makersharks.enums.*;
 import com.example.makersharks.validator.Enum;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.NotEmpty;
 
 @Tag(name = "Query Suppliers Request Body")
 public class QuerySuppliersDTO {
 
-    @NotEmpty
     private String location;
 
-    @Enum(enumClass = NatureOfBusiness.class)
+    @Enum(enumClass = NatureOfBusiness.class, nullable = true)
     private String natureOfBusiness;
 
-    @Enum(enumClass = ManufacturingProcess.class)
+    @Enum(enumClass = ManufacturingProcess.class, nullable = true)
     private String manufacturingProcess;
 
     public QuerySuppliersDTO() {

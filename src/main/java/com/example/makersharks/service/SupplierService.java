@@ -40,12 +40,49 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
-    public Page<Supplier> findSuppliersByLocationAndNatureAndProcess(String location,
+    public Page<Supplier> findSuppliersByLocationAndNatureOfBusinessAndManufacturingProcess(String location,
             String natureOfBusiness,
             String manufacturingProcess,
             Pageable pageable) {
         return supplierRepository.findSuppliersByLocationAndNatureOfBusinessAndManufacturingProcess(location,
                 NatureOfBusiness.forValue(natureOfBusiness),
                 ManufacturingProcess.forValue(manufacturingProcess), pageable);
+    }
+
+    public Page<Supplier> findSuppliersByLocationAndNatureOfBusiness(String location,
+            String natureOfBusiness,
+            Pageable pageable) {
+        return supplierRepository.findSuppliersByLocationAndNatureOfBusiness(location,
+                NatureOfBusiness.forValue(natureOfBusiness), pageable);
+    }
+
+    public Page<Supplier> findSuppliersByLocationAndManufacturingProcess(String location,
+            String manufacturingProcess, Pageable pageable) {
+        return supplierRepository.findSuppliersByLocationAndManufacturingProcess(location,
+                ManufacturingProcess.forValue(manufacturingProcess),
+                pageable);
+    }
+
+    public Page<Supplier> findSuppliersByNatureOfBusinessAndManufacturingProcess(
+            String natureOfBusiness,
+            String manufacturingProcess, Pageable pageable) {
+        return supplierRepository.findSuppliersByNatureOfBusinessAndManufacturingProcess(
+                NatureOfBusiness.forValue(natureOfBusiness),
+                ManufacturingProcess.forValue(manufacturingProcess), pageable);
+    }
+
+    public Page<Supplier> findSuppliersByLocation(String location, Pageable pageable) {
+        return supplierRepository.findSuppliersByLocation(location, pageable);
+    }
+
+    public Page<Supplier> findSuppliersByNatureOfBusiness(String natureOfBusiness, Pageable pageable) {
+        return supplierRepository.findSuppliersByNatureOfBusiness(NatureOfBusiness.forValue(natureOfBusiness),
+                pageable);
+    }
+
+    public Page<Supplier> findSuppliersByManufacturingProcess(String manufacturingProcess,
+            Pageable pageable) {
+        return supplierRepository
+                .findSuppliersByManufacturingProcess(ManufacturingProcess.forValue(manufacturingProcess), pageable);
     }
 }
